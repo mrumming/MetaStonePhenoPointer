@@ -94,4 +94,43 @@ $ ./manage.py shell
 ```
 
 ## Setup of PhenoPointer
-###
+For classification purposes with PhenoPointer no database is needed, if previously trained ML classification models are provided. Pre-trained models can be downloaded form [here](ttps://github.com/mrumming/ppmodels). The downloaded models have to be placed into the **classifiers** directory.
+
+PhenoPointer takes as input Pfam abundance profiles directly or genomic sequences given in FASTA format. The latter one will be processed with **prodigal** (tested with v2.6.3) for gene prediction and later on protein domains will be detected utilising **pfam_scan.pl** (tested with v1.6) - hmmer wrapper (tested with v3.1b2)- against Pfad v29. This pipelines relies on Pfad abundance profiles generated against Pfad v29, because the classification models have been trained on this data basis.
+
+Example entries listed in `settings.py` are given below.
+```
+PFAMSCAN_PATH = '/Users/mrumming/Tools/PfamScan/pfam_scan.pl'
+PFAMSCAN_CPUS = 4
+PFAM29_DIR = '/Users/mrumming/Tools/PFAM29/'
+PRODIGAL_PATH = '/Users/mrumming/Tools/prodigal.v2.6.3/prodigal.osx.10.9.5'
+```
+
+
+
+## Invocation of CLI commands (PhenoPointer)
+
+After successful setup of MetaStone and PhenoPointer, the following commands can be called for different pipeline invocations:
+ - **classify** -  Classify a novel microbial organism. Input can be 
+ - - Pfam (v29) abundance profile generated with **pfam_scan.pl** utilizing hmmer
+ - - Multiple DNA FASTA file/s, that will be processed with **prodigal** and **pfam_scan.pl**
+ - **pandas** - Export for the ease of use and minimising DB workload pandas dataframes of microbial metadata (representing microbial phenotypes/ traits)
+ - **selectbestclassifier** - Given a set of evaluation cross validation runs, select the best classification model for a certain phenotype/ trait
+ - **trainfinalmodel** - Train final ML classification models. that have been selected during xcross runs
+ - **validatemodel** - Validate cross validated ML models against a final validation data set
+ - **xcross** - Perform cross validation of ML models to be evaluated
+
+The [ppmodels](ttps://github.com/mrumming/ppmodels) repository does not only contain pre-trained cross validated ML classification models for predicting microbial phenotypes and traits, but also pandas dataframes used for training and validating these. 
+
+
+
+## Metadata enrichment for use within Metagenome VIZualier (MVIZ)
+
+For metadata-enrichment of microbial community profiles, the **enrich** is the one to use. For filling metadata annotation gaps in the IMG data basis (used within MetaStone), the **infermissingannotationsindb** command fills these by predicting these with PhenoPointer and storing these in MetaStone.
+
+
+
+
+
+
+
