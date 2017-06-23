@@ -1,5 +1,8 @@
 # MetaStone and PhenoPointer
 
+A vast amount of bacterial and archaeal genomic sequences have been generated in the past decade through single cell sequencing and in particular binning of meta- genomic sequences, but a detailed characterization of the functional features and observable phenotypes of such novel genomes is mostly unknown and thus missing. Machine learning models are trained on previously annotated organisms in relation to the mentioned traits and can be used for the characterization of so far undis- covered novel microbial organisms. The metadata is also used to enrich microbial community profiles with this kind of information, and a client-side webtool has been developed for comparative visualizations of these profiles.
+
+MetaStone handles metadata management, whereas PhenoPointer is the ML part for training classification models and performing phenotype and trait prediction for microbial organisms.
 
 ## Setup and installation of MetaStone and PhenoPointer
 ### CLI
