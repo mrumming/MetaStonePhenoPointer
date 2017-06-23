@@ -123,7 +123,7 @@ After successful setup of MetaStone and PhenoPointer, the following commands can
  - **validatemodel** - Validate cross validated ML models against a final validation data set
  - **xcross** - Perform cross validation of ML models to be evaluated
 
-The [ppmodels](ttps://github.com/mrumming/ppmodels) repository does not only contain pre-trained cross validated ML classification models for predicting microbial phenotypes and traits, but also pandas dataframes used for training and validating these. 
+The [ppmodels](https://github.com/mrumming/ppmodels) repository does not only contain pre-trained cross validated ML classification models for predicting microbial phenotypes and traits, but also pandas dataframes used for training and validating these. 
 
 
 
